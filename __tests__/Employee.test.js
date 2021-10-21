@@ -1,4 +1,4 @@
-const {test} = require('@jest/globals')
+const { test } = require('@jest/globals')
 const Employee = require('../lib/Employee');
 
 test('creates a Employee object', () => {
