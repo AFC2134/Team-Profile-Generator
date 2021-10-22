@@ -1,28 +1,10 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
+generateMarkdown = require('./src/index')
 let allEmployees = [];
 
 function questions() {
-
-
-    // inquirer
-    // .prompt([
-    //     {
-    //     type: 'input',
-    //     name: 'managerName',
-    //     message: "what is the name of this manager?",
-    //     message: "what is the employee ID of this manager?",
-    //     messege: "what is the"
-    // }
-    // ])
-
-
-
-
-
-
-
     inquirer
         .prompt([
             {
