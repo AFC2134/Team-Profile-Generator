@@ -82,19 +82,20 @@ function questions() {
                         choices: ["Add Employee", "Complete Team"]
                     }
                 ])
-                .then(engineerAnswer => {
-                    let engineerAction = new Engineer(empData.employeeName, empData.employeeId, empData.employeeEmail, engineerAction.gitHub)
+                .then((engineerAnswer) => {
+                    let engineerAction = new Engineer(empData.employeeName, empData.employeeId, empData.employeeEmail, engineerAction.gitHub);
                     allEmployees.push(engineerAction)
                     if (engineerAnswer.updateEmp === "Add Employee") {
-                        questions()
-                    }
+                        questions();
+                    } else { 
+                        let HTML = generateMarkdown(allEmployees)
+                    fs.writeFile("index.html", HTML, function(err) {
+                        if (err) {
+                            return console.log(err);
+                        }
+                    });
                     
-                })
-            
-            
-            
-            
-            
+                }
             
             }
         })
