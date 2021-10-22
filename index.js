@@ -3,7 +3,7 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-generateMarkdown = require('./src/index');
+const generateMarkdown = require('./src/index');
 let allEmployees = [];
 
 function questions() {
@@ -67,41 +67,41 @@ function questions() {
             }
 
             // else if if users answers engineer , then ask questions that pretain to engineer, intern ect. push new data to new array , else generatenardown. repeate adding to Array.. make new classes for enginner and intern , use super, specific to them info same as manager constructor... console log to trial error template literal, 
-            else if(empData.employeeClass === "engineer") {
+            else if (empData.employeeClass === "engineer") {
                 inquirer
-                .prompt([
-                    {
-                        type: "input",
-                        name: "gitHub",
-                        message: "Please enter your github User Name."
-                    },
-                    {
-                        type: "list",
-                        name: "updateEmp",
-                        message: "Would you like to add another employee or Complete Team?",
-                        choices: ["Add Employee", "Complete Team"]
-                    }
-                ])
-                .then((engineerAnswer) => {
-                    let engineerAction = new Engineer(empData.employeeName, empData.employeeId, empData.employeeEmail, engineerAction.gitHub);
-                    allEmployees.push(engineerAction)
-                    if (engineerAnswer.updateEmp === "Add Employee") {
-                        questions();
-                    } else { 
-                        let HTML = generateMarkdown(allEmployees)
-                    fs.writeFile("index.html", HTML, function(err) {
-                        if (err) {
-                            return console.log(err);
+                    .prompt([
+                        {
+                            type: "input",
+                            name: "gitHub",
+                            message: "Please enter your github User Name."
+                        },
+                        {
+                            type: "list",
+                            name: "updateEmp",
+                            message: "Would you like to add another employee or Complete Team?",
+                            choices: ["Add Employee", "Complete Team"]
                         }
-                    });
-                    
-                }
-            
-            }
+                    ])
+                    .then(engineerAnswer => {
+                        let engineerAction = new Engineer(empData.employeeName, empData.employeeId, empData.employeeEmail, engineerAction.gitHub);
+                        allEmployees.push(engineerAction)
+                        if (engineerAnswer.updateEmp === "Add Employee") {
+                            questions();
+                        } else {
+                            let HTML = generateMarkdown(allEmployees)
+                            fs.writeFile("index.html", HTML, function (err) {
+                                if (err) {
+                                    return console.log(err);
+                                }
+                            });
+
+                        }
+
+                    }
+                    )}
+
         })
-
-
-
 }
 
-questions()
+
+questions();

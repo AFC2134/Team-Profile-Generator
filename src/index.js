@@ -1,4 +1,5 @@
 const fs = require('fs');
+const indexJS = require('../index')
 
 function generateMarkdown() {
     `<!DOCTYPE html>
