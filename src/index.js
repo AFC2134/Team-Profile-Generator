@@ -29,7 +29,8 @@ const generateMarkdown = (allEmployees) => {
     
         <div>
            
-        
+        ${generateCards(allEmployees)}
+    
     
         </div>
     
@@ -37,6 +38,34 @@ const generateMarkdown = (allEmployees) => {
     
     </html>
     `;
+};
+const generateCards = (allEmployees) => {
+    console.log('generateCards')
+    console.log(allEmployees)
+    console.log(allEmployees[0].name)
+    function displayExtraInfo(teamMember) {
+        if(teamMember.constructor.name === 'Manager') {
+            return `Office number: ${teamMember.number}`
+        } else if(teamMember.constructor.name === 'Engineer') {
+            return `Github: <a href= "https://github.com/${teamMember.gitHub}" target="_blank">${teamMember.gitHub}</a>`
+        } else if(teamMember.constructor.name === 'Intern'){
+            return `School: ${teamMember.school}`
+        }
+    }
+    let htmlCard = ''
+    for(let i = 0; i < allEmployees.length; i++) {
+      htmlCard += `<div class="card" style="width: 18rem;">
+       <div class="card-body">
+           <h5 class="card-title">${allEmployees[i].name}</h5>
+           <h6 class="card-subtitle mb-2 text-muted">${allEmployees[i].constructor.name}</h6>
+           <p class="card-text">
+           id: ${allEmployees[i].Id}
+           Email: <a href="mailto:${allEmployees[i].email}">${allEmployees[i].email}</a>
+           ${displayExtraInfo(allEmployees[i])}
+           </p>
+       </div>` 
+    }
+    return htmlCard
 }
 
 module.exports = generateMarkdown;
