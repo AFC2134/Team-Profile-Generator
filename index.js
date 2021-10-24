@@ -132,7 +132,7 @@ function questions() {
                 }
 
         })
-}
+};
 
 
 questions();

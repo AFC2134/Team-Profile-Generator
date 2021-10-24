@@ -1,13 +1,4 @@
-const fs = require('fs');
-const indexJS = require('../index')
 
-// fucntion renderManager() {
-    
-// }
-
-const generateMarkdown = (allEmployees) => {
-    console.log(allEmployees)
-    return `
     <!DOCTYPE html>
     <html lang="en">
     
@@ -23,7 +14,7 @@ const generateMarkdown = (allEmployees) => {
     <body>
         <nav class="navbar navbar-light bg-light">
             <div class="container-fluid">
-                <span class="navbar-brand mb-0 h1">Team Members</span>
+                <span class="navbar-brand mb-0 h1">Team</span>
             </div>
         </nav>
     
@@ -36,7 +27,4 @@ const generateMarkdown = (allEmployees) => {
     </body>
     
     </html>
-    `;
-}
-
-module.exports = generateMarkdown;
+    
