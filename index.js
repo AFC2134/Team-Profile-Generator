@@ -103,7 +103,7 @@ function questions() {
                     inquirer
                     .prompt([
                         {
-                            type: "Input",
+                            type: "input",
                             name: "schoolName",
                             message: "Please enter the name of your School."
                         },

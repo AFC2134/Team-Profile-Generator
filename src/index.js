@@ -43,13 +43,13 @@ const generateCards = (allEmployees) => {
     console.log('generateCards')
     console.log(allEmployees)
     console.log(allEmployees[0].name)
-    function displayExtraInfo(teamMember) {
-        if(teamMember.constructor.name === 'Manager') {
-            return `Office number: ${teamMember.number}`
-        } else if(teamMember.constructor.name === 'Engineer') {
-            return `Github: <a href= "https://github.com/${teamMember.gitHub}" target="_blank">${teamMember.gitHub}</a>`
-        } else if(teamMember.constructor.name === 'Intern'){
-            return `School: ${teamMember.school}`
+    function displayExtraInfo(allEmployees) {
+        if(allEmployees.constructor.name === 'Manager') {
+            return `Office number: ${allEmployees.officeNum}`
+        } else if(allEmployees.constructor.name === 'Engineer') {
+            return `Github: <a href= "https://github.com/${allEmployees.gitHub}" target="_blank">${allEmployees.gitHub}</a>`
+        } else if(allEmployees.constructor.name === 'Intern'){
+            return `School: ${allEmployees.schoolName}`
         }
     }
     let htmlCard = ''
