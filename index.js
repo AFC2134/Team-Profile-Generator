@@ -31,7 +31,7 @@ function questions() {
                 message: 'What is the employee Email'
             }
         ])
-        .then(empData => {
+        .then((empData) => {
             if (empData.employeeClass === "manager") {
                 inquirer
                     .prompt([
@@ -49,14 +49,14 @@ function questions() {
 
                     ])
 
-                    .then(managerAnswers => {
+                    .then((managerAnswers) => {
                         let managerAction = new Manager(empData.employeeName, empData.employeeId, empData.employeeEmail, managerAnswers.officeNum)
                         allEmployees.push(managerAction)
                         if (managerAnswers.updateEmp === "Add Employee") {
                             questions();
                         } else {
                             let HTML = generateMarkdown(allEmployees)
-                            fs.writeFile("index.html", HTML, function (err) {
+                            fs.writeFile("index.html", HTML, "utf-8", function (err) {
                                 if (err) {
                                     console.log(err);
                                 }
@@ -82,14 +82,14 @@ function questions() {
                             choices: ["Add Employee", "Complete Team"]
                         }
                     ])
-                    .then(engineerAnswer => {
-                        let engineerAction = new Engineer(empData.employeeName, empData.employeeId, empData.employeeEmail, engineerAction.gitHub);
+                    .then((engineerAnswer) => {
+                        let engineerAction = new Engineer(empData.employeeName, empData.employeeId, empData.employeeEmail, engineerAnswer.gitHub);
                         allEmployees.push(engineerAction)
                         if (engineerAnswer.updateEmp === "Add Employee") {
                             questions();
                         } else {
                             let HTML = generateMarkdown(allEmployees)
-                            fs.writeFile("index.html", HTML, function (err) {
+                            fs.writeFile("index.html", HTML, "utf-8", function (err) {
                                 if (err) {
                                     return console.log(err);
                                 }
@@ -97,8 +97,39 @@ function questions() {
 
                         }
 
-                    }
-                    )}
+                    })
+                }
+                else if (empData.employeeClass === "intern") {
+                    inquirer
+                    .prompt([
+                        {
+                            type: "Input",
+                            name: "schoolName",
+                            message: "Please enter the name of your School."
+                        },
+                        {
+                            type: "list",
+                            name: "updateEmp",
+                            message: "Would you like to add another employee or Complete Team?",
+                            choices: ["Add Employee", "Complete Team"]
+
+                        }
+                    ])
+                    .then((internAnswer) => {
+                        let internAction = new Intern (empData.employeeName, empData.employeeId, empData.employeeEmail, internAnswer.schoolName);
+                        allEmployees.push(internAction);
+                        if (internAnswer.updateEmp === "Add Employee") {
+                            questions();
+                        } else {
+                            let HTML = generateMarkdown(allEmployees)
+                            fs.writeFile("index.html", HTML, "utf-8", function (err) {
+                                if (err) {
+                                    return console.log(err);
+                                }
+                            })
+                        }
+                    })
+                }
 
         })
 }

@@ -1,7 +1,13 @@
 const fs = require('fs');
 const indexJS = require('../index')
 
+// fucntion renderManager() {
+    
+// }
+
+
 function generateMarkdown() {
+    return
     `<!DOCTYPE html>
     <html lang="en">
     <head>
