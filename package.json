@@ -1,7 +1,6 @@
 {
   "name": "teamprofilegen",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "directories": {
     "lib": "lib"
@@ -21,5 +20,7 @@
   "homepage": "https://github.com/AFC2134/Team-Profile-Generator#readme",
   "devDependencies": {
     "jest": "^27.3.1"
-  }
+  },
+  "dependencies": {},
+  "description": ""
 }
