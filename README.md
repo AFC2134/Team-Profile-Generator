@@ -16,6 +16,7 @@
     Install inquirer and jest and the FS package from node. Then run the app through the user terminal by calling node index.js
 
   ## Usage
+  https://watch.screencastify.com/v/rXgfyv1QFVbEleUw2kbe Click here to view a video of this app in action. Also passing all TDD.
     
 
   ## License  
